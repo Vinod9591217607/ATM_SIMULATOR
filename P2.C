@@ -1,0 +1,273 @@
+#include<graphics.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<string.h>
+
+
+struct account
+{int accno;
+int balance;
+char name[30];
+int pin;
+}ac[5];
+
+
+void withdraw(struct account *, int);
+void deposit(struct account* , int);
+void bal(struct account* , int);
+void password(struct account *, int);
+
+void main()
+{
+  int acnum,i;
+  int ch;
+
+  while(!kbhit())
+  {
+  int gd=DETECT,gm;
+  int maxx,maxy;
+  int x,y,i,j,k;
+  int border_color;
+  int poly[5];
+  int midx,midy;
+  int m,n;
+  float xradius,yradius;
+
+
+  initgraph(&gd,&gm,"C:\\TC\\BGI");
+
+ // bar(100,100,400,250);
+ // circle(400,250,50);
+  setbkcolor(RED);
+ // settextstyle(0,HORIZ_DIR,4);
+ // outtextxy(250,50," ATM ");
+ // circle(250,50,50);
+
+  maxx=getmaxx();
+  maxy=getmaxy();
+ // setcolor(getmaxcolor());
+ // setfillstyle(SOLID_FILL,getmaxcolor());
+  rectangle(0,0,maxx,maxy);
+ // border_color=WHITE;
+ // setfillstyle(HATCH_FILL,RED);
+  rectangle(0,400,maxx,maxy);
+//  floodfill(0,200,border_color);
+//  floodfill(2,2,getmaxcolor());
+
+
+//  midx=getmaxx()/4;
+//  midy=getmaxy()/4;
+//  xradius=20;  yradius=30;
+//  fillellipse(200,200,xradius,yradius);
+
+
+
+   bar(150,150,150,350);
+   bar(150,350,500,350);
+   bar(500,350,500,150);
+   bar(500,150,150,150);
+
+   bar(250,200,250,300);
+   bar(250,300,400,300);
+   bar(400,300,400,200);
+   bar(400,200,250,200);
+   setcolor(BLUE);
+   outtextxy(300,250,"WELCOME");
+   setcolor(WHITE);
+   outtextxy(4,225,"INSERT CARD HERE");
+
+   settextstyle(1,HORIZ_DIR,5);
+   setcolor(WHITE);
+   outtextxy(250,50," ATM ");
+
+
+   m=200;
+   n=200;
+   for(i=0;i<2;i++)
+   {
+     n=200;
+     for(j=0;j<2;j++)
+     {                                        //operational  buttons
+       circle(m,n,40);
+       setfillstyle(SOLID_FILL,DARKGRAY);
+       floodfill(m,n,WHITE);
+       n=n+100;
+     }
+    n=200;
+    m=m+250;
+   }
+
+  settextstyle(0,HORIZ_DIR,1);
+  setcolor(GREEN);
+  outtextxy(170,200,"WITHDRAW");
+  setcolor(WHITE);
+  outtextxy(168,210,"(PRESS 1)");
+  setcolor(GREEN);
+  outtextxy(422,200,"DEPOSIT");
+  setcolor(WHITE);
+  outtextxy(418,210,"(PRESS 2)");
+  setcolor(GREEN);
+  outtextxy(170,300,"BALANCE");
+  setcolor(WHITE);
+  outtextxy(168,310,"(PRESS 3)");
+  setcolor(GREEN);
+  outtextxy(417,295," CHANGE");
+  outtextxy(417,303,"PASSWORD");
+  setcolor(WHITE);
+  outtextxy(417,315,"(PRESS 4)");
+
+
+
+  setfillstyle(SOLID_FILL,BLUE);
+  floodfill(7,300,BLACK);
+  setcolor(WHITE);
+  bar(7,250,100,275);
+  x=maxx-100;
+  y=200;
+ // k=1;
+  for(i=0;i<3;i++)
+ {
+   setfillstyle(SOLID_FILL,WHITE);
+   y=200;
+ //  while(j<4)
+   for(j=0;j<4;j++)
+   {
+     bar(x,y,x+20,y+20);
+    // floodfill(x,y,WHITE);                               //number keys
+     setcolor(RED);
+     y=y+25;
+   }
+   j=0;
+   y=200;
+   x=x+25;
+ }
+ outtextxy(maxx-100,202,"1");
+ outtextxy(maxx-75,202,"2");
+ outtextxy(maxx-50,202,"3");
+
+ outtextxy(maxx-100,227,"4");
+ outtextxy(maxx-75,227,"5");
+ outtextxy(maxx-50,227,"6");
+
+ outtextxy(maxx-100,252,"7");
+ outtextxy(maxx-75,252,"8");
+ outtextxy(maxx-50,252,"9");
+
+ outtextxy(maxx-100,277,"*");
+ outtextxy(maxx-75,277,"0");
+ outtextxy(maxx-50,277,"#");
+
+  settextstyle(0,HORIZ_DIR,1);
+  setcolor(GREEN);
+  outtextxy(10,440,"PLEASE PRESS ANY KEY TO CONTINUE....");
+  outtextxy(10,450,"PLEASE ENTER YOUR CHOICE(1-4):");
+
+  getch();
+  closegraph();
+ }
+
+
+ {
+	int acnum,i;
+	int ch;
+	char c;
+	ac[0].accno=100;
+	ac[0].balance=15000;
+	ac[0].pin=1234;
+
+	ac[1].accno=101;
+	ac[1].balance=15000;
+	ac[1].pin=2222;
+
+	ac[2].accno=102;
+	ac[2].balance=15000;
+	ac[2].pin=3333;
+
+	ac[3].accno=103;
+	ac[3].balance=15000;
+	ac[3].pin=4444;
+
+	ac[4].accno=104;
+	ac[4].balance=15000;
+	ac[4].pin=5555;
+	strcpy(ac[0].name,"RAHUL");
+	strcpy(ac[1].name,"ROHAN");
+	strcpy(ac[2].name,"VINOD");
+	strcpy(ac[3].name,"VEERESH");
+	strcpy(ac[4].name,"ADITYA");
+	printf("Ente your  account number ");
+	scanf("%d", &acnum);
+	for(i=0;i<5;i++)
+	{	if(ac[i].accno==acnum)
+		{
+		  do
+		  {
+			printf("Enter your choice ");
+			scanf("%d", &ch);
+			switch(ch)
+			{
+				case 1: withdraw(ac,i);
+				break;
+
+				case 2:deposit(ac,i);
+				break;
+
+				case 3 :bal(ac,i);
+				break;
+
+				case 4: password(ac,i);
+				break;
+
+				default:printf(" invalid choice");
+			}
+			printf("Do you want to continue\n");
+			scanf(" %c",&c);
+		  }while(c=='y' || c=='Y');
+		}
+
+	}
+  getch();
+ }
+}
+
+void bal(struct account *ac,int i )
+{
+	printf("\n YOUR BALANCE IN Rs : %d ", ac[i].balance);
+}
+
+void withdraw(struct account *ac, int i)
+{
+	int w;
+	printf("\n YOUR CURRENT BALANCE IN Rs : %d ", ac[i].balance);
+	printf("\n ENTER THE AMOUNT YOU WANT WITHDRAW :  ");
+	scanf("%d", &w);
+	ac[i].balance-=w;
+	printf("\n YOUR  CURRENT BALANCE IN Rs : %d ", ac[i].balance);
+}
+
+void deposit(struct account *ac, int i)
+{
+	int w;
+	printf("\n YOUR CURRENT BALANCE IN Rs : %d ", ac[i].balance);
+	printf("\n ENTER THE AMOUNT YOU ARE DEPOSITING :  ");
+	scanf("%d", &w);
+	ac[i].balance+=w;
+	printf("\n YOUR  CURRENT BALANCE IN Rs : %d ", ac[i].balance);
+}
+
+void password(struct account *ac, int i)
+{
+	int pass;
+	printf("\n ENTER YOUR PIN  ");
+	scanf("%d", &pass);
+	if(pass==ac[i].pin)
+	{
+		printf("\n ENTER YOUR NEW PIN   ");
+		scanf("%d", &pass);
+		ac[i].pin==pass;
+	}
+	else
+	printf(" invalid password");
+}
+
